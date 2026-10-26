@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tạo CV nhanh (Copy)</title>
+<style>
+:root{--bg:#f3f1ec;--panel:#fff;--ink:#1d2330;--mute:#667085;--line:#d9d6cd;--accent:#1f5c4d;--field:#faf9f6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15181d;--panel:#1e2229;--ink:#eceae4;--mute:#9aa1ad;--line:#343a44;--accent:#6fc2a8;--field:#171a20}}
+:root[data-theme="dark"]{--bg:#15181d;--panel:#1e2229;--ink:#eceae4;--mute:#9aa1ad;--line:#343a44;--accent:#6fc2a8;--field:#171a20}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Be Vietnam Pro","Segoe UI",system-ui,sans-serif}
+.app{display:grid;grid-template-columns:minmax(300px,440px) 1fr;gap:20px;max-width:1200px;margin:0 auto;padding:16px}
+@media(max-width:860px){.app{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px}
+h1{font:600 22px/1.2 Georgia,"Times New Roman",serif;margin:0 0 4px}
+.sub{color:var(--mute);margin:0 0 14px;font-size:13px}
+h2{font:600 15px/1.3 Georgia,serif;margin:20px 0 8px;padding-top:14px;border-top:1px solid var(--line)}
+label{display:block;font-size:13px;color:var(--mute);margin:8px 0 3px}
+input,textarea{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--field);color:var(--ink);font:inherit}
+input:focus,textarea:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+textarea{min-height:76px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.item{border:1px dashed var(--line);border-radius:8px;padding:4px 10px 10px;margin-bottom:8px}
+button{font:inherit;cursor:pointer;border-radius:6px;border:1px solid var(--line);background:var(--field);color:var(--ink);padding:7px 12px}
+button.main{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+:root[data-theme="dark"] button.main{color:#10201b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) button.main{color:#10201b}}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.sw{width:26px;height:26px;border-radius:50%;padding:0;border:2px solid var(--panel);box-shadow:0 0 0 1px var(--line)}
+.sw.on{box-shadow:0 0 0 2px var(--ink)}
+.stage{overflow-x:auto}
+#cv{--c:#b3243b;background:#fff;color:#1b1f27;width:100%;max-width:794px;min-height:600px;margin:0 auto;padding-bottom:28px;box-shadow:0 2px 14px rgba(0,0,0,.18);font:13px/1.55 "Be Vietnam Pro","Segoe UI",sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+#cv ul{margin:4px 0;padding-left:18px}
+#cv .top{display:flex;gap:26px;align-items:flex-start}
+#cv .ph,#cv .ph0{width:230px;height:230px;flex:none;object-fit:cover;background:#e6e8ee}
+#cv .tx{flex:1;min-width:0;padding:30px 26px 0 0}
+#cv .nm{font-size:32px;font-weight:700;line-height:1.15;color:var(--c)}
+#cv .ti{font-size:21px;font-weight:700;margin-top:24px;padding-bottom:10px;border-bottom:2px solid #1b1f27}
+#cv .sm{margin-top:10px;text-align:justify}
+#cv .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:30px 26px 0}
+#cv .hh{border-top:2px solid var(--c);border-bottom:2px solid var(--c);padding:5px 0;margin-bottom:12px;font-size:15px;font-weight:700}
+#cv .ic{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+#cv .ic i{width:20px;height:20px;border-radius:4px;background:var(--c);display:grid;place-items:center;flex:none}
+#cv .ic svg{width:13px;height:13px}
+#cv .ic span{min-width:0;word-break:break-word}
+#cv .e{margin-bottom:10px}
+#cv .cols b{display:block;margin-top:4px}
+#cv .xp{padding:30px 26px 0}
+#cv .tl{position:relative;padding-left:26px}
+#cv .tl:before{content:"";position:absolute;left:3px;top:6px;bottom:0;width:2px;background:#333}
+#cv .xi{display:grid;grid-template-columns:190px 1fr;gap:20px;position:relative;margin-bottom:18px}
+#cv .xi:before{content:"";position:absolute;left:-27px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--c)}
+#cv .xi b{display:block}
+#cv .hb ul{columns:150px;margin:0}
+@media(max-width:600px){#cv:not(.pf) .top{flex-direction:column}#cv:not(.pf) .tx{padding:16px}#cv:not(.pf) .cols{grid-template-columns:1fr}#cv:not(.pf) .xi{grid-template-columns:1fr;gap:4px}}
+@media print{body{background:#fff}.panel,.bar,.sub{display:none!important}.app{display:block;padding:0}.stage{overflow:visible}#cv{box-shadow:none;max-width:none}}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+<div class="app">
+<div class="panel" id="form">
+<h1>Tạo CV của bạn</h1>
+<p class="sub">Điền thông tin bên dưới, bản CV hiện ngay bên cạnh. Dữ liệu chỉ lưu trên trình duyệt của bạn.</p>
+<label>Ảnh đại diện (không bắt buộc)</label>
+<input type="file" id="photo" accept="image/*">
+<div class="row"><div><label>Họ và tên</label><input data-k="name" placeholder="Nguyễn Văn A"></div>
+<div><label>Vị trí ứng tuyển</label><input data-k="title" placeholder="Nhân viên kinh doanh"></div></div>
+<div class="row"><div><label>Email</label><input data-k="email" type="email"></div>
+<div><label>Số điện thoại</label><input data-k="phone"></div></div>
+<div class="row"><div><label>Ngày sinh</label><input data-k="dob" placeholder="15/05/1995"></div><div><label>Địa chỉ</label><input data-k="addr"></div></div>
+<label>Giới thiệu bản thân</label><textarea data-k="summary" placeholder="2–3 câu về điểm mạnh và mục tiêu nghề nghiệp"></textarea>
+<h2>Kinh nghiệm làm việc</h2><div id="expL"></div><button type="button" data-add="exp">Thêm công việc</button>
+<h2>Học vấn</h2><div id="eduL"></div><button type="button" data-add="edu">Thêm trường học</button>
+<h2>Hoạt động</h2><div id="actL"></div><button type="button" data-add="act">Thêm hoạt động</button>
+<h2>Kỹ năng, ngoại ngữ và sở thích</h2>
+<label>Kỹ năng (cách nhau bằng dấu phẩy)</label><input data-k="skills" placeholder="Excel, Giao tiếp, Photoshop">
+<label>Ngoại ngữ (cách nhau bằng dấu phẩy)</label><input data-k="langs" placeholder="Tiếng Anh IELTS 6.5">
+<label>Sở thích (cách nhau bằng dấu phẩy)</label><input data-k="hobby" placeholder="Đọc sách, Du lịch, Nấu ăn">
+</div>
+<div>
+<div class="panel bar">
+<span id="sws"></span>
+<button type="button" class="main" id="print" style="margin-left:auto">Tải PDF</button><span id="msg" role="status" style="flex-basis:100%;font-size:13px;color:var(--mute)"></span>
+</div>
+<div class="stage"><div id="cv"></div></div>
+</div>
+</div>
+<script>
+var S={hobby:"",act:[{}],dob:"",name:"",title:"",email:"",phone:"",addr:"",summary:"",skills:"",langs:"",photo:"",exp:[{}],edu:[{}],color:"#b3243b",tpl:"modern"};
+var F={exp:[["role","Vị trí"],["org","Công ty"],["time","Thời gian (vd: 01/2022 - Hiện tại)"],["desc","Mô tả công việc (mỗi dòng một ý)","t"]],act:[["role","Vai trò"],["org","Tên hoạt động / tổ chức"],["time","Thời gian (vd: 06/2016 - 08/2016)"],["desc","Mô tả (mỗi dòng một ý)","t"]],edu:[["school","Trường"],["major","Ngành học"],["time","Thời gian (vd: 2013 - 2017)"],["ach","Thành tích (mỗi dòng một ý)","t"]]};
+var COL=["#b3243b","#1f5c4d","#2b4a8b","#3b3b3b","#8a5a12"];
+try{var d=localStorage.getItem("cv-draft2");if(d){var o=JSON.parse(d);for(var k in o)S[k]=o[k]}}catch(e){}
+function esc(s){return String(s||"").replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function br(s){return esc(s).replace(/\n/g,"<br>")}
+function save(){try{localStorage.setItem("cv-draft2",JSON.stringify(S))}catch(e){}}
+function list(k){var h="";S[k].forEach(function(it,i){h+='<div class="item">';F[k].forEach(function(f){h+='<label>'+f[1]+'</label>'+(f[2]?'<textarea':'<input')+' data-l="'+k+'" data-i="'+i+'" data-f="'+f[0]+'"'+(f[2]?'>'+esc(it[f[0]])+'</textarea>':' value="'+esc(it[f[0]])+'">')});h+='<button type="button" data-del="'+k+'" data-i="'+i+'" style="margin-top:8px">Xóa mục này</button></div>'});document.getElementById(k+"L").innerHTML=h}
+function sec(t,body){return body?'<h3>'+t+'</h3>'+body:""}
+function ul(a){return a.length?"<ul>"+a.map(function(x){return"<li>"+esc(x)+"</li>"}).join("")+"</ul>":""}
+function lines(s){return ul(String(s||"").split("\n").map(function(x){return x.trim()}).filter(Boolean))}
+function csv(s){return String(s||"").split(",").map(function(x){return x.trim()}).filter(Boolean)}
+var ICO={dob:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',mail:'<rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/>',tel:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',pin:'<path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>'};
+function ic(k,v){return v?'<div class="ic"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'+ICO[k]+'</svg></i><span>'+esc(v)+'</span></div>':""}
+function tl(a){return a.filter(function(e){return e.role||e.org||e.desc}).map(function(e){return'<div class="xi"><div>'+esc(e.time)+'<b>'+esc(e.org)+'</b></div><div><b>'+esc(e.role)+'</b>'+lines(e.desc)+'</div></div>'}).join("")}
+function xs(t,b){return b?'<div class="xp"><div class="hh">'+t+'</div><div class="tl">'+b+'</div></div>':""}
+function render(){
+ var cv=document.getElementById("cv");cv.style.setProperty("--c",S.color);
+ var info=ic("dob",S.dob)+ic("mail",S.email)+ic("tel",S.phone)+ic("pin",S.addr);
+ var edu=S.edu.filter(function(e){return e.school||e.major}).map(function(e){return'<div class="e"><b>'+esc(e.school)+'</b><div>'+esc(e.major)+'</div><div>'+esc(e.time)+'</div>'+lines(e.ach)+'</div>'}).join("");
+ var sk=csv(S.skills),lg=csv(S.langs),hb=csv(S.hobby);
+ var skl=(sk.length?'<b>Kỹ năng</b>'+ul(sk):"")+(lg.length?'<b>Ngoại ngữ</b>'+ul(lg):"");
+ cv.innerHTML='<div class="top">'+(S.photo?'<img class="ph" src="'+S.photo+'" alt="">':'<div class="ph0"></div>')+'<div class="tx"><div class="nm">'+(esc(S.name)||"Họ và tên")+'</div><div class="ti">'+(esc(S.title)||"Vị trí ứng tuyển")+'</div><div class="sm">'+br(S.summary)+'</div></div></div>'
+ +'<div class="cols"><div><div class="hh">THÔNG TIN CÁ NHÂN</div>'+info+'</div><div><div class="hh">HỌC VẤN</div>'+edu+'</div><div><div class="hh">KỸ NĂNG &amp; NGOẠI NGỮ</div>'+skl+'</div></div>'
+ +xs("KINH NGHIỆM LÀM VIỆC",tl(S.exp))+xs("HOẠT ĐỘNG",tl(S.act))
+ +(hb.length?'<div class="xp"><div class="hh">SỞ THÍCH</div><div class="hb">'+ul(hb)+'</div></div>':"");
+ save()}
+var DL=null;try{claude.use("downloads").then(function(d){DL=d}).catch(function(){})}catch(e){}
+function say(m){document.getElementById("msg").textContent=m||""}
+function pdf(){
+ var cv=document.getElementById("cv"),b=document.getElementById("print");
+ if(!DL){say("Chưa tải được PDF trực tiếp trong khung này. Hãy mở trang trong claude.ai, hoặc nhấn Ctrl+P (Cmd+P) rồi chọn Lưu thành PDF.");try{window.print()}catch(e){}return}
+ if(!window.html2canvas||!window.jspdf){say("Thư viện tạo PDF chưa tải xong, hãy thử lại sau vài giây.");return}
+ b.disabled=true;say("Đang tạo PDF...");cv.classList.add("pf");cv.style.width="794px";cv.style.maxWidth="none";
+ var reset=function(){cv.classList.remove("pf");cv.style.width="";cv.style.maxWidth="";b.disabled=false};
+ window.html2canvas(cv,{scale:2,backgroundColor:"#ffffff"}).then(function(c){
+  reset();
+  var d=new window.jspdf.jsPDF({unit:"mm",format:"a4"}),W=210,H=297,h=c.height*W/c.width,im=c.toDataURL("image/jpeg",.92),y=0,left=h-H;
+  d.addImage(im,"JPEG",0,0,W,h);
+  while(left>1){y-=H;d.addPage();d.addImage(im,"JPEG",0,y,W,h);left-=H}
+  return DL.save({filename:(S.name||"CV").trim()+" - CV.pdf",data:d.output("blob")})
+ }).then(function(){say("Đã lưu PDF.")}).catch(function(e){reset();say(e&&e.code==="declined"?"":"Không tạo được PDF, hãy thử lại.")})}
+document.addEventListener("input",function(e){var t=e.target;
+ if(t.dataset.k){S[t.dataset.k]=t.value}else if(t.dataset.l){S[t.dataset.l][+t.dataset.i][t.dataset.f]=t.value}else return;render()});
+document.addEventListener("click",function(e){var t=e.target;
+ if(t.dataset.add){S[t.dataset.add].push({});list(t.dataset.add)}
+ else if(t.dataset.del){var a=S[t.dataset.del];a.splice(+t.dataset.i,1);if(!a.length)a.push({});list(t.dataset.del)}
+ else if(t.dataset.t){S.tpl=t.dataset.t;document.querySelectorAll(".tp").forEach(function(b){b.classList.toggle("on",b===t)})}
+ else if(t.dataset.c){S.color=t.dataset.c;sw()}
+ else if(t.id==="print"){pdf();return}else return;render()});
+document.getElementById("photo").addEventListener("change",function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var c=document.createElement("canvas");c.width=c.height=240;var x=c.getContext("2d"),m=Math.min(im.width,im.height);x.drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,240,240);S.photo=c.toDataURL("image/jpeg",.85);render()};im.src=r.result};r.readAsDataURL(f)});
+function sw(){document.getElementById("sws").innerHTML=COL.map(function(c){return'<button type="button" class="sw'+(c===S.color?" on":"")+'" data-c="'+c+'" style="background:'+c+'" aria-label="Màu '+c+'"></button>'}).join(" ")}
+document.querySelectorAll("[data-k]").forEach(function(i){i.value=S[i.dataset.k]||""});
+document.querySelectorAll(".tp").forEach(function(b){b.classList.toggle("on",b.dataset.t===S.tpl)});
+list("exp");list("edu");list("act");sw();render();
+</script>
+</body>
+</html>
